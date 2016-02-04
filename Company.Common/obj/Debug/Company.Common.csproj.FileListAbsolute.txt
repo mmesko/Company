@@ -1,0 +1,4 @@
+C:\Users\mmesko00\Desktop\Company\Company.Common\bin\Debug\Company.Common.dll
+C:\Users\mmesko00\Desktop\Company\Company.Common\bin\Debug\Company.Common.pdb
+C:\Users\mmesko00\Desktop\Company\Company.Common\obj\Debug\Company.Common.dll
+C:\Users\mmesko00\Desktop\Company\Company.Common\obj\Debug\Company.Common.pdb

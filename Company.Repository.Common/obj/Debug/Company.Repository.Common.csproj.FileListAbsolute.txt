@@ -1,0 +1,9 @@
+C:\Users\mmesko00\Desktop\Company\Company.Repository.Common\bin\Debug\Company.Repository.Common.dll
+C:\Users\mmesko00\Desktop\Company\Company.Repository.Common\bin\Debug\Company.Repository.Common.pdb
+C:\Users\mmesko00\Desktop\Company\Company.Repository.Common\bin\Debug\Company.Common.dll
+C:\Users\mmesko00\Desktop\Company\Company.Repository.Common\bin\Debug\Company.Model.Common.dll
+C:\Users\mmesko00\Desktop\Company\Company.Repository.Common\bin\Debug\Company.Common.pdb
+C:\Users\mmesko00\Desktop\Company\Company.Repository.Common\bin\Debug\Company.Model.Common.pdb
+C:\Users\mmesko00\Desktop\Company\Company.Repository.Common\obj\Debug\Company.Repository.Common.csprojResolveAssemblyReference.cache
+C:\Users\mmesko00\Desktop\Company\Company.Repository.Common\obj\Debug\Company.Repository.Common.dll
+C:\Users\mmesko00\Desktop\Company\Company.Repository.Common\obj\Debug\Company.Repository.Common.pdb
