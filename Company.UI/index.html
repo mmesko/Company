@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Company</title>
+      <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+</head>
+<body>
+   
+ <div class="container" ng-app="app">
+       
+        <!-- Menu navigation -->
+        <div ng-controller="NavigationController as vm" style="margin-top:5em;">
+
+           <!-- NAVIGATION -->
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="container-fluid">
+                    <img class="nav navbar-nav navbar-left" src="">
+                    <a class="navbar-brand">COMPANY d.o.o</a>
+
+                    <div class="navbar-collapse collapse">
+
+                        <!-- Menu -->
+                        <ul class="nav navbar-nav"  ng-repeat="menu in vm.menus">
+                            <!-- :: one way binding -->
+                            <li class="{{menu.active}}"><a href="{{menu.link}}" ng-click="vm.setActive($index)">{{::menu.name}}</a></li>
+                        </ul>
+
+                                       
+                    </div>                
+                </div>
+            </nav>
+       
+
+            <!-- VIEW -->
+            <div ng-view></div>
+
+            <!-- Alert -->
+            <div id="notification" class="notification {{vm.alert.cls}}">
+                {{vm.alert.msg}}
+            </div>
+        </div>
+    </div>
+
+
+   <script src="app/scripts/jquery-1.10.2.min.js"></script>
+   <script src="app/scripts/bootstrap.min.js"></script>
+ 
+
+    <!-- Angular and dependencies -->
+    <script src="app/scripts/angular.min.js"></script>
+    <script src="app/scripts/angular-route.min.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/scripts/ui-bootstrap-tpls-0.13.0.min.js"></script> <!-- Angular UI for modals -->
+
+
+    <!-- Services -->   
+    <script src="app/services/navigationMenu.service.js"></script>
+    <script src="app/constants/navigation.constants.js"></script>
+    <script src="app/services/notification.service.js"></script>
+
+    <!--Export table-->
+    <script src="app/scripts/tableExport.js"></script>
+    <script src="app/scripts/jquery.base64.js"></script>
+
+        <!--Printing-->
+    <script src="app/scripts/sprintf.js"></script>
+    <script src="app/scripts/jspdf.js"></script>
+    <script src="app/scripts/base64.js"></script>
+
+    <!-- Navigation -->
+    <script src="app/navigation/navigation.controller.js"></script>
+
+    <!-- Home -->
+    <script src="app/home/home.controller.js"></script>
+    <script src="app/home/home.service.js"></script>
+    
+        <!-- department -->
+    <script src="app/department/department.controller.js"></script>
+    <script src="app/department/department.service.js"></script>
+
+    <!-- employee -->
+    <script src="app/employee/employee.controller.js"></script>
+    <script src="app/employee/employee.service.js"></script>
+    
+</body>
+<hr>
+<div id="footer">
+        <div class="container" align = "center">
+            <p>Developed by: <a href="http://mmesko00@gmail.com">mmesko</a></p>
+        </div>
+    </div>
+</html>
+
+</html>

@@ -373,7 +373,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>65402</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:65402/</IISUrl>
+          <IISUrl>http://localhost:65402/company/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

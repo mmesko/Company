@@ -1,0 +1,6 @@
+C:\Users\mmesko00\Desktop\Company\Company.UI\bin\Company.UI.dll.config
+C:\Users\mmesko00\Desktop\Company\Company.UI\bin\Company.UI.dll
+C:\Users\mmesko00\Desktop\Company\Company.UI\bin\Company.UI.pdb
+C:\Users\mmesko00\Desktop\Company\Company.UI\obj\Debug\Company.UI.csprojResolveAssemblyReference.cache
+C:\Users\mmesko00\Desktop\Company\Company.UI\obj\Debug\Company.UI.dll
+C:\Users\mmesko00\Desktop\Company\Company.UI\obj\Debug\Company.UI.pdb

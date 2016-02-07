@@ -1,0 +1,65 @@
+<div ng-controller="DepartmentController">
+    <h4 class="page-header">Departments</h4>
+    <hr>
+    <div class="container">
+
+       <!-- Search bar-->
+        <div class="row">
+            <div class="col-xs-3">
+
+                <input type="text" ng-model="dp.searchString" placeholder="Search Employee">
+                <button type="button" class="btn btn-primary" ng-click="dp.get()">Show</button>
+
+            </div>
+        </div>
+        <br />
+               
+               <!--Print task list-->
+                <div class="btn-group">
+                    <button class="btn btn-warning btn-sm dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i> Export Table Data</button>
+                    <ul class="dropdown-menu " role="menu">
+                        <li><a href="#" onclick="$('#tasks').tableExport({type:'pdf',pdfFontSize:'7',escape:'false'});"> <img src='images/pdf.png' width='24'> PDF</a></li>
+                        <li><a href="#" onclick="$('#tasks').tableExport({type:'txt',escape:'false'});"> <img src='images/txt.png' width='24'> TXT</a></li>
+                        <li><a href="#" onclick="$('#tasks').tableExport({type:'doc',escape:'false'});"> <img src='images/word.png' width='24'> Word</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#" onclick="$('#tasks').tableExport({type:'csv',escape:'false'});"> <img src='images/csv.png' width='24'> CSV</a></li>
+                    </ul>
+                </div>
+          
+            <br /><br /><br />
+            <!-- Tasks table -->
+        <div ng-if=" dp.showDepartmentsTable">
+        <table class="table table-striped table-bordered table-condensed table-hover" id="tasks">
+            <thead>
+                <tr>
+                    <td>#</td>
+                    <td><strong>Department No</strong></td>
+                    <td><strong>Department Name</strong></td>
+                    <td><strong>Department Location</strong></td>
+  
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="department in dp.departments | filter: dp.searchString">
+                    <td>{{$index + 1}}.</td>
+                    <td>{{department.departmentNo}}</td>
+                    <td>{{department.departmentName}}</td>
+                    <td>{{department.departmentLocation}}</td>             
+                </tr>
+
+            </tbody>
+        </table>
+            <button ng-if="dp.pageNumber !== 1" class="btn btn-sm btn-warning" ng-click="dp.back()">
+                <span class="glyphicon glyphicon-menu-left"></span>
+                &laquo; Previous
+            </button>
+
+            <button ng-if="dp.departments.length === 5" class="btn btn-sm btn-warning pull-right" ng-click="dp.next()">
+                Next &raquo;
+                <span class="glyphicon glyphicon-menu-right  col-sm-offset-1"></span>
+            </button>  
+    </div>
+ 
+
+       </div>
+</div>
