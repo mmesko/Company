@@ -1,56 +1,64 @@
 <div ng-controller="EmployeeController">
     <h4 class="page-header">Employees</h4>
-    <hr>
+    
     <div class="container">
 
-       <!-- Search bar-->
-       <div class="row">
-					<div class="col-xs-3">
-												
-                            <input type="text" ng-model="em.searchString" placeholder="Search Employee">
-                            <button type="button" class="btn btn-primary" ng-click="em.get()" >Show</button>
-						
-					</div>					
-				</div>
+        <!-- Search bar-->
+        <div class="row">
+            <div class="col-xs-3">
+
+                <input type="text" ng-model="em.searchString" placeholder="Search Employee">
+                <button type="button" class="btn btn-primary" ng-click="em.get()">Show</button>
+
+               
+
+            </div>
+
+            <button ng-click="em.showAdd()" title="Add" class="btn btn-primary pull-right"><i class="icon-white icon-plus"></i> Add </button>
+        </div>
         <br />
 
-              
-               <!--Print task list-->
-                <div class="btn-group">
-                    <button class="btn btn-warning btn-sm dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i> Export Table Data</button>
-                    <ul class="dropdown-menu " role="menu">
-                        <li><a href="#" onclick="$('#tasks').tableExport({type:'pdf',pdfFontSize:'7',escape:'false'});"> <img src='images/pdf.png' width='24'> PDF</a></li>
-                        <li><a href="#" onclick="$('#tasks').tableExport({type:'txt',escape:'false'});"> <img src='images/txt.png' width='24'> TXT</a></li>
-                        <li><a href="#" onclick="$('#tasks').tableExport({type:'doc',escape:'false'});"> <img src='images/word.png' width='24'> Word</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#" onclick="$('#tasks').tableExport({type:'csv',escape:'false'});"> <img src='images/csv.png' width='24'> CSV</a></li>
-                    </ul>
-                </div>
-          
-            <br /><br /><br />
-            <!-- Tasks table -->
-        <div ng-if=" em.showEmployeeTable">
-        <table class="table table-striped table-bordered table-condensed table-hover" id="tasks">
-            <thead>
-                <tr>
-                    <td>#</td>
-                    <td><strong>Employee No</strong></td>
-                    <td><strong>Department No</strong></td>
-                    <td><strong>Employee Name</strong></td>
-                    <td><strong>Salary</strong></td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="employee in em.employees | filter: em.searchString">
-                    <td>{{$index + 1}}.</td>
-                     <td>{{employee.employeeNo}}</td>
-                    <td>{{employee.departmentNo}}</td>
-                    <td>{{employee.employeeName}}</td>
-                    <td>{{employee.salary}}</td>             
-                </tr>
 
-            </tbody>
-        </table>
+        <!--Print task list-->
+        <div class="btn-group">
+            <button class="btn btn-warning btn-sm dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i> Export Table Data</button>
+            <ul class="dropdown-menu " role="menu">
+                <li><a href="#" onclick="$('#tasks').tableExport({type:'pdf',pdfFontSize:'7',escape:'false'});"> <img src='images/pdf.png' width='24'> PDF</a></li>
+                <li><a href="#" onclick="$('#tasks').tableExport({type:'txt',escape:'false'});"> <img src='images/txt.png' width='24'> TXT</a></li>
+                <li><a href="#" onclick="$('#tasks').tableExport({type:'doc',escape:'false'});"> <img src='images/word.png' width='24'> Word</a></li>
+                <li class="divider"></li>
+                <li><a href="#" onclick="$('#tasks').tableExport({type:'csv',escape:'false'});"> <img src='images/csv.png' width='24'> CSV</a></li>
+            </ul>
+        </div>
+
+        <br /><br /><br />
+        <!-- Tasks table -->
+        <div ng-if=" em.showEmployeeTable">
+            <table class="table table-striped table-bordered table-condensed table-hover" id="tasks">
+                <thead>
+                    <tr>
+                        <td>#</td>
+                        <td><strong>Employee No</strong></td>
+                        <td><strong>Department No</strong></td>
+                        <td><strong>Employee Name</strong></td>
+                        <td><strong>Salary</strong></td>
+                        <td><strong>Edit</strong></td>
+                        <td><strong>Delete</strong></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="employee in em.employees | filter: em.searchString">
+                        <td>{{$index + 1}}.</td>
+                        <td>{{employee.employeeNo}}</td>
+                        <td>{{employee.departmentNo}}</td>
+                        <td>{{employee.employeeName}}</td>
+                        <td>{{employee.salary}}</td>
+                        <td><a ng-click="em.showEdit(employee)" class="btn btn-small btn-primary">Edit</a></td>
+                        <td><a ng-click="em.delete(employee)" class="btn btn-small btn-danger">Delete</a></td>
+                    </tr>
+
+                </tbody>
+            </table>
             <button ng-if="em.pageNumber !== 1" class="btn btn-sm btn-warning" ng-click="em.back()">
                 <span class="glyphicon glyphicon-menu-left"></span>
                 &laquo; Previous
@@ -59,9 +67,66 @@
             <button ng-if="em.employees.length === 5" class="btn btn-sm btn-warning pull-right" ng-click="em.next()">
                 Next &raquo;
                 <span class="glyphicon glyphicon-menu-right  col-sm-offset-1"></span>
-            </button>  
-    </div>
- 
+            </button>
+        </div>
 
-       </div>
+
+    </div>
+
+
+    <div ng-show="em.showEditView" align="center">
+
+        <div>
+            <label for="editName">Edit Name:</label><br>
+            <input type="text" id="editName" ng-model="em.selected.employeeName">
+        </div>
+        <div>
+
+            <label for="editAbrv">Edit salary:</label><br>
+            <input type="number" id="editAbrv" ng-model="em.selected.salary">
+        </div>
+        <div>
+            <a href="javascript:void(0);" ng-click="em.put(em.selected)" title="Update">
+                Save
+            </a>
+            <a href="javascript:void(0);" ng-click="em.showEditView=false">
+              Cancel
+            </a>
+        </div>
+    </div>
+
+
+    <div ng-show="em.showAddView" align="center">
+
+        <div>
+            <label for="editTitle">Employee No:</label><br>
+            <input type="text"  ng-model="em.newItem.employeeNo">
+        </div>
+        <div>
+            <label for="editAbrv">Employee name:</label><br>
+            <input type="text"  ng-model="em.newItem.employeeName">
+        </div>
+        <div>
+            <label for="editAbrv">departmentNo:</label><br>
+            <input type="text" ng-model="em.newItem.departmentNo">
+        </div>
+        <div>
+            <label for="editAbrv">Salary:</label><br>
+            <input type="text" ng-model="em.newItem.salary">
+        </div>
+        <div>
+            <label for="editAbrv">Date:</label><br>
+            <input type="datetime" ng-model="em.newItem.lastModifyDate">
+        </div>
+        <div>
+            <a href="javascript:void(0);" ng-click="em.post(em.newItem)" title="Update">
+               Save
+            </a>
+            <a href="javascript:void(0);" ng-click="em.showAddView=false">
+                Cancel
+            </a>
+        </div>
+    </div>
+</div>
+
 </div>

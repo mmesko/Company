@@ -100,6 +100,7 @@ namespace Company.WebApi.Controllers
             }
 
             [HttpPost]
+            [Route("")]
             public async Task<HttpResponseMessage> Insert(EmployeeModel emp)
             {
                 try
