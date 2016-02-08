@@ -1,6 +1,6 @@
 <div ng-controller="DepartmentController">
     <h4 class="page-header">Departments</h4>
-    <hr>
+    
     <div class="container">
 
        <!-- Search bar-->
@@ -11,6 +11,7 @@
                 <button type="button" class="btn btn-primary" ng-click="dp.get()">Show</button>
 
             </div>
+            <button ng-click="dp.showAdd()" title="Add" class="btn btn-primary pull-right"><i class="icon-white icon-plus"></i> Add </button>
         </div>
         <br />
                
@@ -36,7 +37,8 @@
                     <td><strong>Department No</strong></td>
                     <td><strong>Department Name</strong></td>
                     <td><strong>Department Location</strong></td>
-  
+                    <td><strong>Edit</strong></td>
+                    <td><strong>Delete</strong></td>
                 </tr>
             </thead>
             <tbody>
@@ -44,7 +46,9 @@
                     <td>{{$index + 1}}.</td>
                     <td>{{department.departmentNo}}</td>
                     <td>{{department.departmentName}}</td>
-                    <td>{{department.departmentLocation}}</td>             
+                    <td>{{department.departmentLocation}}</td>
+                    <td><a ng-click="dp.showEdit(department)" class="btn btn-small btn-primary">Edit</a></td>
+                    <td><a ng-click="dp.delete(department)" class="btn btn-small btn-danger">Delete</a></td>             
                 </tr>
 
             </tbody>
@@ -59,7 +63,52 @@
                 <span class="glyphicon glyphicon-menu-right  col-sm-offset-1"></span>
             </button>  
     </div>
- 
+   </div>
 
-       </div>
+    <div ng-show="dp.showEditView" align="center">
+
+        <div>
+            <label for="editName">Edit Name:</label><br>
+            <input type="text" ng-model="dp.selected.departmentName">
+        </div>
+        <div>
+
+            <label for="editAbrv">Edit location:</label><br>
+            <input type="text"  ng-model="dp.selected.departmentLocation">
+        </div>
+        <div>
+            <a href="javascript:void(0);" ng-click="dp.put(dp.selected)" title="Update">
+                Save
+            </a>
+            <a href="javascript:void(0);" ng-click="dp.showEditView=false">
+                Cancel
+            </a>
+        </div>
+    </div>
+
+    <div ng-show="dp.showAddView" align="center">
+
+        <div>
+            <label for="editTitle">Department No:</label><br>
+            <input type="number" ng-model="dp.newItem.departmentNo">
+        </div>
+        <div>
+            <label for="editAbrv">Department name:</label><br>
+            <input type="text" ng-model="dp.newItem.departmentName">
+        </div>
+        <div>
+            <label for="editAbrv">Department Location:</label><br>
+            <input type="text" ng-model="dp.newItem.departmentLocation">
+        </div>
+   
+        <div>
+            <a href="javascript:void(0);" ng-click="dp.post(dp.newItem)" title="Update">
+                Save
+            </a>
+            <a href="javascript:void(0);" ng-click="dp.showAddView=false">
+                Cancel
+            </a>
+        </div>
+    </div>
+
 </div>

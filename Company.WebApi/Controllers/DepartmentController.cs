@@ -99,6 +99,7 @@ namespace Company.WebApi.Controllers
             }
 
             [HttpPost]
+            [Route("")]
             public async Task<HttpResponseMessage> Insert(DepartmentModel dep)
             {
                 try

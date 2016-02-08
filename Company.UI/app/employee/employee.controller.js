@@ -3,8 +3,8 @@
     'use strict';
 
     angular.module('app')
-        .controller('EmployeeController', ['employeeService', '$window', '$scope',
-            function (employeeService, $window, $scope) {
+        .controller('EmployeeController', ['employeeService', '$window', '$scope', 'notificationService',
+            function (employeeService, $window, $scope, notificationService) {
 
                 var em= $scope.em = {};
                
@@ -45,15 +45,15 @@
                         employeeService.getEmployeesBySearch(em.searchString, em.pageNumber, pageSize).success(function (data) {
                             em.employees = data;
                         }).error(function (error) {
-                            console.log('Unable to load table: ' + error.message);
+                            notificationService.addNotification(data, false);
                         });
                     }
                     else {
-                        //inace mi dohvati sve
+                       
                         employeeService.getEmployees(em.pageNumber, pageSize).success(function (data) {
                             em.employees = data;
                         }).error(function (error) {
-                            console.log('Unable to load table: ' + error.message);
+                            notificationService.addNotification(data, false);
                         });
                     }
 
@@ -79,13 +79,13 @@
                    employeeService.postEmployee(item)
                          .success(function (data) {
                              console.log(data);
-                             $window.alert("Added successfully!");
+                             notificationService.addNotification("Added successfully", true);
                              em.get();
                              em.selected = {};
                          })
                          .error(function (data) {
-                             console.log($window.alert("Cannot be added!"));
-                             console.log(data); //error
+                             notificationService.addNotification(data, false);
+                             em.get();
                          });
                };
 
@@ -97,14 +97,11 @@
                    employeeService.putEmployee(em.selected)
                       .success(function (data) {
                           em.selected = data;
-                          console.log($window.alert("User updated successfully!"));
+                          notificationService.addNotification("Updated successfully", true);
                           em.showEdit();
                       })
                       .error(function (data) {
-
-                          $window.alert("Name already exist!");
-                          console.log(em.selected);
-                          console.log(data); // error 
+                          notificationService.addNotification(data, false);
                           em.get();
 
                       });
@@ -117,14 +114,14 @@
 
                        employeeService.deleteEmployee(item.employeeNo)
                            .success(function (data) {
-                               console.log(data);
-                               console.log($window.alert("Deleted"));
+                               notificationService.addNotification("Deleted successfully", true);
                                em.get();
                                em.selected = {};
 
                            })
                            .error(function (data) {
-                               console.log(data);
+                               notificationService.addNotification(data, false);
+                               em.get();
                            });
                    }
                };
