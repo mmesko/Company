@@ -25,6 +25,11 @@ namespace Company.Service
             return await repository.GetAsync(id);
         }
 
+        public async Task<ICollection<IDepartment>> GetAsync()
+        {
+            return await repository.GetAsync();
+        }
+
         public async Task<ICollection<Model.Common.IDepartment>> GetRangeAsync(GenericPaging filter)
         {
             return await repository.GetRangeAsync(filter);

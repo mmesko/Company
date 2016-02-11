@@ -23,6 +23,11 @@ namespace Company.Repository
 
         #region Methods
 
+        public Task<ICollection<IDepartment>> GetAsync()
+        {
+            return Task.FromResult(Mapper.Map<ICollection<IDepartment>>(repository.Where<Department>()));
+        }
+
         public async Task<Model.Common.IDepartment> GetAsync(int id)
         {
             try

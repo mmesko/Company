@@ -8,6 +8,7 @@ namespace Company.Repository.Common
    public interface IDepartmentRepository
     {
         Task<IDepartment> GetAsync(int id);
+        Task<ICollection<IDepartment>> GetAsync();
         Task<ICollection<IDepartment>> GetRangeAsync(GenericPaging filter);
         Task<ICollection<IDepartment>> GetRangeAsync(GenericPaging filter, string search);
         Task<int> AddAsync(IDepartment dep);

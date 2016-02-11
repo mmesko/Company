@@ -38,9 +38,8 @@
                 <thead>
                     <tr>
                         <td>#</td>
-                        <td><strong>Employee No</strong></td>
-                        <td><strong>Department No</strong></td>
                         <td><strong>Employee Name</strong></td>
+                        <td><strong>Department</strong></td>                     
                         <td><strong>Salary</strong></td>
                         <td><strong>Edit</strong></td>
                         <td><strong>Delete</strong></td>
@@ -49,9 +48,8 @@
                 <tbody>
                     <tr ng-repeat="employee in em.employees | filter: em.searchString">
                         <td>{{$index + 1}}.</td>
-                        <td>{{employee.employeeNo}}</td>
-                        <td>{{employee.departmentNo}}</td>
                         <td>{{employee.employeeName}}</td>
+                        <td>{{employee.Department.departmentNo}}-{{employee.Department.departmentName}}</td>
                         <td>{{employee.salary}}</td>
                         <td><a ng-click="em.showEdit(employee)" class="btn btn-small btn-primary">Edit</a></td>
                         <td><a ng-click="em.delete(employee)" class="btn btn-small btn-danger">Delete</a></td>
@@ -86,6 +84,13 @@
             <input type="number" ng-model="em.selected.salary">
         </div>
         <div>
+            <label for="editAbrv">Department</label><br>
+            <select name="repeatSelect" style="width:180px; " id="repeatSelect" ng-model="em.selected.departmentNo">
+                <br />
+                <option ng-repeat="option in em.employees" value="{{option.departmentNo}}">{{option.departmentNo}}-{{option.Department.departmentName}}</option>
+            </select>
+        </div>
+        <div>
             <a href="javascript:void(0);" ng-click="em.put(em.selected)" title="Update">
                 Save
             </a>
@@ -97,18 +102,16 @@
 
 
     <div ng-show="em.showAddView" align="center">
-
-        <div>
-            <label for="editTitle">Employee No:</label><br>
-            <input type="number"  ng-model="em.newItem.employeeNo">
-        </div>
         <div>
             <label for="editAbrv">Employee name:</label><br>
             <input type="text"  ng-model="em.newItem.employeeName">
         </div>
         <div>
-            <label for="editAbrv">departmentNo:</label><br>
-            <input type="number" ng-model="em.newItem.departmentNo">
+            <label for="editAbrv">Department</label><br>
+            <select name="repeatSelect" style="width:180px; " id="repeatSelect" ng-model="em.newItem.departmentNo">
+                <br />
+                <option ng-repeat="option in em.employees" value="{{option.departmentNo}}">{{option.departmentNo}}-{{option.Department.departmentName}}</option>
+            </select>
         </div>
         <div>
             <label for="editAbrv">Salary:</label><br>

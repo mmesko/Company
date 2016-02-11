@@ -22,6 +22,29 @@ namespace Company.WebApi.Controllers
             this.service = service;
         }
 
+            [HttpGet]
+            public async Task<HttpResponseMessage> Get()
+            {
+                try
+                {
+                    ICollection<DepartmentModel> user = Mapper.Map<ICollection<DepartmentModel>>(await service.GetAsync());
+                    if (user == null)
+                    {
+                        return Request.CreateResponse(HttpStatusCode.NotFound, "Can't find any user");
+                    }
+                    else
+                    {
+                        return Request.CreateResponse(HttpStatusCode.OK, user);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+                }
+            }
+
+
+
             [Route("getById/{id}")]
             [HttpGet]
             public async Task<HttpResponseMessage> Get(int id)

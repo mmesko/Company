@@ -7,7 +7,8 @@
             function (employeeService, $window, $scope, notificationService) {
 
                 var em= $scope.em = {};
-               
+                
+                em.departments = [];
                 em.employees = [];
                 em.employee = null;
                 //selected item from table
@@ -17,7 +18,7 @@
                 em.showAddView = false;
                 em.showEditView = false;
                 em.newItem = {};
-               em.pageNumber = 1;
+                em.pageNumber = 1;
                 var pageSize = 5; 
                
                
@@ -93,6 +94,8 @@
 
                    em.selected.employeeName = item.employeeName;
                    em.selected.salary = item.salary;
+                   em.selected.Department.departmentNo = em.departmentModel ? em.departmentModel.departmentNo: item.departmentNo;
+
 
                    employeeService.putEmployee(em.selected)
                       .success(function (data) {

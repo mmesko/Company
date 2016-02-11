@@ -15,6 +15,11 @@
                         return $http.get(routePrefix.employee + "/GetByName/" + search + "/" + pageNumber + "/" + pageSize);
                     },
 
+                    getDepartments: function () {
+
+                        return $http.get(routePrefix.department);
+                    },
+
                     postEmployee: function (data) {
                         console.log($.param(data));
                         return $http({

@@ -23,6 +23,8 @@ namespace Company.Repository
 
         #region Methods
 
+
+
         public async Task<Model.Common.IEmployee> GetAsync(int id)
         {
             try

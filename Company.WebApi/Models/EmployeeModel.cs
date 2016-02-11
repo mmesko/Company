@@ -8,6 +8,8 @@ namespace Company.WebApi.Models
         public string employeeName { get; set; }
         public decimal salary { get; set; }
         public System.DateTime lastModifyDate { get; set; }
+
+        public DepartmentModel Department { get; set; }
       
     }
 }
