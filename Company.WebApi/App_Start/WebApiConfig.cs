@@ -19,8 +19,8 @@ namespace Company.WebApi
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
 
             // Enable cors
-            EnableCorsAttribute corsAttr = new EnableCorsAttribute("http://localhost:65402", "*", "*");
-            config.EnableCors(corsAttr);
+            //EnableCorsAttribute corsAttr = new EnableCorsAttribute("http://localhost:65402", "*", "*");
+            //config.EnableCors(corsAttr);
 
 
             // Web API routes

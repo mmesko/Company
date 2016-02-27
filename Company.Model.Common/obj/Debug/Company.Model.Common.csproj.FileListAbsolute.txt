@@ -2,3 +2,4 @@ C:\Users\mmesko00\Desktop\Company\Company.Model.Common\bin\Debug\Company.Model.C
 C:\Users\mmesko00\Desktop\Company\Company.Model.Common\bin\Debug\Company.Model.Common.pdb
 C:\Users\mmesko00\Desktop\Company\Company.Model.Common\obj\Debug\Company.Model.Common.dll
 C:\Users\mmesko00\Desktop\Company\Company.Model.Common\obj\Debug\Company.Model.Common.pdb
+C:\Users\mmesko00\Desktop\Company\Company.Model.Common\obj\Debug\Company.Model.Common.csprojResolveAssemblyReference.cache

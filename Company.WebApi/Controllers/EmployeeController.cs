@@ -127,6 +127,7 @@ namespace Company.WebApi.Controllers
             [HttpPut]
             [Route("Update/{id}")]
             public async Task<HttpResponseMessage> Update(int id, EmployeeModel model)
+            
             {
                 try
                 {

@@ -17,7 +17,7 @@
 
                     getDepartments: function () {
 
-                        return $http.get(routePrefix.department);
+                        return $http.get(routePrefix.department + "/");
                     },
 
                     postEmployee: function (data) {

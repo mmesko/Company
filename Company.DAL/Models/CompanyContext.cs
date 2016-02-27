@@ -1,6 +1,9 @@
+
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using Company.DAL.Models.Mapping;
+using System.Threading.Tasks;
+using System;
 
 namespace Company.DAL.Models
 {
@@ -16,13 +19,24 @@ namespace Company.DAL.Models
         {
         }
 
+
         public DbSet<Department> Departments { get; set; }
+
         public DbSet<Employee> Employees { get; set; }
+
+     
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+
             modelBuilder.Configurations.Add(new DepartmentMap());
+
             modelBuilder.Configurations.Add(new EmployeeMap());
+
+          
+
         }
     }
+
 }

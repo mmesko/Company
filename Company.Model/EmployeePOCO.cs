@@ -1,4 +1,5 @@
 ﻿using Company.Model.Common;
+using System;
 
 namespace Company.Model
 {
@@ -8,7 +9,8 @@ namespace Company.Model
         public int departmentNo { get; set; }
         public string employeeName { get; set; }
         public decimal salary { get; set; }
-        public System.DateTime lastModifyDate { get; set; }
+
+        public Nullable<System.DateTime> lastModifyDate { get; set; }
         public IDepartment Department { get; set; }
     }
 }

@@ -23,6 +23,7 @@ namespace Company.WebApi.Controllers
         }
 
             [HttpGet]
+            [Route("")]    
             public async Task<HttpResponseMessage> Get()
             {
                 try
@@ -149,7 +150,7 @@ namespace Company.WebApi.Controllers
             [HttpPut]
             [Route("Update/{id}")]
             public async Task<HttpResponseMessage> Update(int id, DepartmentModel model)
-            {
+             {
                 try
                 {
                     int result = await service.UpdateAsync(Mapper.Map<IDepartment>(model));
