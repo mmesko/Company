@@ -1,4 +1,5 @@
 ﻿
+using System;
 namespace Company.WebApi.Models
 {
     public class EmployeeModel
@@ -7,7 +8,7 @@ namespace Company.WebApi.Models
         public int departmentNo { get; set; }
         public string employeeName { get; set; }
         public decimal salary { get; set; }
-        public System.DateTime lastModifyDate { get; set; }
+        public Nullable<System.DateTime> lastModifyDate { get; set; }
 
         public DepartmentModel Department { get; set; }
       

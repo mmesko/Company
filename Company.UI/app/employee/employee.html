@@ -49,7 +49,7 @@
                     <tr ng-repeat="employee in em.employees | filter: em.searchString">
                         <td>{{$index + 1}}.</td>
                         <td>{{employee.employeeName}}</td>
-                        <td>{{employee.Department.departmentNo}}-{{employee.Department.departmentName}}</td>
+                        <td>{{employee.Department.departmentName}}, {{employee.Department.departmentLocation}}</td>
                         <td>{{employee.salary}}</td>
                         <td><a ng-click="em.showEdit(employee)" class="btn btn-small btn-primary">Edit</a></td>
                         <td><a ng-click="em.delete(employee)" class="btn btn-small btn-danger">Delete</a></td>
@@ -84,9 +84,9 @@
             <input type="number" ng-model="em.selected.salary">
         </div>
         <div>
-            <label for="editName">Change user:</label><br>
-            <select id="s1" ng-model="em.departmentModel" ng-options="item as item.departmentName for item in em.departments">
-            </select>
+            <label for="editName">Change department:</label><br>
+            <select id="s1" ng-model="em.departmentModel" ng-options="item as (item.departmentName+ ', '+ item.departmentLocation)  for item in em.departments" style="width:180px;"></select>
+            <input type="hidden" name="value" value="{{em.departmentModel}}" />
         </div>
         <div>
             <a href="javascript:void(0);" ng-click="em.put(em.selected)" title="Update">
@@ -105,8 +105,8 @@
             <input type="text" ng-model="em.newItem.employeeName">
         </div>
         <div>
-            <label for="editName">Change user:</label><br>
-            <select id="s1" ng-model="em.newItem.Department" ng-options="item as item.departmentName for item in em.departments" style="width:180px;"></select>
+            <label for="editName">Add department:</label><br>
+            <select id="s1"  ng-model="em.newItem.Department" ng-options="item as (item.departmentName+ ', '+ item.departmentLocation) for item in em.departments" style="width:180px;"></select>
         </div>
         <div>
             <label for="editAbrv">Salary:</label><br>
@@ -114,7 +114,7 @@
         </div>
         <div>
             <label for="editAbrv">Date:</label><br>
-            <input type="datetime" ng-model="em.newItem.lastModifyDate">
+            <input type="date" class="form-control" ng-model="em.newItem.lastModifyDate" style="width:180px;">
         </div>
         <div>
             <a href="javascript:void(0);" ng-click="em.post(em.newItem)" title="Update">

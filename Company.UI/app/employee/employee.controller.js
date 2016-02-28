@@ -140,6 +140,7 @@
                    employeeService.putEmployee(em.selected)
                       .success(function (data) {
                           em.selected = data;
+                          em.get();
                           notificationService.addNotification("Updated successfully", true);
                           em.showEdit();
                       })
