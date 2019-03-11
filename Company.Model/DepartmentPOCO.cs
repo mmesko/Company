@@ -14,5 +14,6 @@ namespace Company.Model
         public string departmentName { get; set; }
         public string departmentLocation { get; set; }
         public ICollection<IEmployee> Employees { get; set; }
+		public string departmentInfo{ get; set; }
     }
 }
